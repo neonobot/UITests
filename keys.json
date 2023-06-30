@@ -1,0 +1,69 @@
+{
+  "Ethereum (ETH)": {
+    "chainId": 1,
+    "name": "Ethereum",
+    "symbol": "ETH",
+    "decimals": 18,
+    "net": "eth",
+    "logoURI": "https://assets.coingecko.com/coins/images/279/small/ethereum.png?1595348880",
+    "nativeToken": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notNativeToken": "0x2a3bff78b79a009976eea096a51a948a3dc00e34",
+    "stableCoin": "0xdac17f958d2ee523a2206206994597c13d831ec7",
+    "owner": "0xd5ed26d93129a8b51ac54b40477327f6511824b6"
+  },
+  "Binance Smart Chain (BNB)": {
+    "chainId": 56,
+    "name": "Binance Smart Chain",
+    "symbol": "BNB",
+    "decimals": 18,
+    "net": "bsc",
+    "logoURI": "https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png?1644979850",
+    "nativeToken": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notNativeToken": "0xe8670901e86818745b28c8b30b17986958fce8cc",
+    "stableCoin": "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d",
+    "owner": "0xd5ed26d93129a8b51ac54b40477327f6511824b6"
+  },
+  "Polygon (MATIC)": {
+    "chainId": 137,
+    "name": "Polygon",
+    "symbol": "MATIC",
+    "decimals": 18,
+    "net": "polygon",
+    "logoURI": "https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png?1624446912",
+    "nativeToken": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notNativeToken": "0xa1428174f516f527fafdd146b883bb4428682737",
+    "stableCoin": "0x8f3cf7ad23cd3cadbd9735aff958023239c6a063",
+    "owner": "0xd5ed26d93129a8b51ac54b40477327f6511824b6"
+  },
+  "Arbitrum One (ETH)": {
+    "chainId": 42161,
+    "name": "Arbitrum One",
+    "symbol": "ETH",
+    "decimals": 18,
+    "net": "arbitrum",
+    "logoURI": "https://assets.coingecko.com/coins/images/16547/small/photo_2023-03-29_21.47.00.jpeg?1680097630",
+    "nativeToken": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notNativeToken": "0xd4d42f0b6def4ce0383636770ef773390d85c61a",
+    "stableCoin": "0xfd086bc7cd5c481dcc9c85ebe478a1c0b69fcbb9",
+    "owner": "0xd5ed26d93129a8b51ac54b40477327f6511824b6"
+  },
+  "Avalanche (AVAX)": {
+    "chainId": 43114,
+    "name": "Avalanche",
+    "symbol": "AVAX",
+    "decimals": 18,
+    "net": "avalanche",
+    "logoURI": "https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png?1670992574",
+    "nativeToken": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "notNativeToken": "0x2147efff675e4a4ee1c2f918d181cdbd7a8e208f",
+    "stableCoin": "0xa7d7079b0fead91f3e65f86e8915cb59c1a4c664",
+    "owner": "0xd5ed26d93129a8b51ac54b40477327f6511824b6"
+  },
+  "Optimism (ETH)": {
+    "chain_id": 10,
+    "name": "Optimism",
+    "symbol": "ETH",
+    "decimals": 18,
+    "net": "optimism"
+  }
+}

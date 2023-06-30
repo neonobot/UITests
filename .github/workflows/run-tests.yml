@@ -1,0 +1,71 @@
+name: Run Tests
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set TELEGRAM_BOT_TOKEN environment variable
+        run: echo "TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Create temporary keys.json
+        run: echo '${{ secrets.KEYS }}' > keys.json
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Set up Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y curl
+          curl -o allure-2.15.0.tgz -Ls https://github.com/allure-framework/allure2/releases/download/2.15.0/allure-2.15.0.tgz
+          sudo tar -zxvf allure-2.15.0.tgz -C /opt/
+          sudo ln -s /opt/allure-2.15.0/bin/allure /usr/bin/allure
+          allure --version
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install Playwright
+        run: |
+          npx playwright install
+
+      - name: Run tests and generate Allure report
+        run: |
+          python -m pytest -n=2 ./tests/tests_ui_web3.py --alluredir allure-results| tee test_results.txt
+          echo "TOTAL_TESTS=$(cat test_results.txt | grep -oP '(\d+) total')" >> $GITHUB_ENV
+          echo "PASSED_TESTS=$(cat test_results.txt | grep -oP '(\d+) passed')" >> $GITHUB_ENV
+          echo "FAILED_TESTS=$(cat test_results.txt | grep -oP '(\d+) failed')" >> $GITHUB_ENV
+          echo "SKIPPED_TESTS=$(cat test_results.txt | grep -oP '(\d+) skipped')" >> $GITHUB_ENV
+          allure generate ./allure-results -o ./allure-report
+
+
+      - name: Deploy Allure report
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.MY_GITHUB_TOKEN }}
+          publish_dir: ./allure-report
+          publish_branch: gh-pages
+
+      - name: Send Test Results via Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TOTAL_TESTS: ${{ env.TOTAL_TESTS }}
+          PASSED_TESTS: ${{ env.PASSED_TESTS }}
+          FAILED_TESTS: ${{ env.FAILED_TESTS }}
+          SKIPPED_TESTS: ${{ env.SKIPPED_TESTS }}
+          Allure Report: https://neonobot.github.io/deBridgeApiTest/
+        run: python telegram_bot.py

@@ -1,0 +1,8 @@
+/serviceCalls/chromium_profile/
+*.png
+/tests/tests_ui.py
+keys.json
+*.ini
+tests/videos
+tests/serviceCalls
+.pytest_cache

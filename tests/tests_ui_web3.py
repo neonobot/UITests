@@ -18,7 +18,7 @@ from serviceCalls.web3_service import MainPage, SendPage, MetamaskPage
 
 def test_mocking_blockchain(page: Page, metamask_signin, extension_id: str) -> None:
     # сравнение скриншотов и мокирование запросов на главной странице
-    MainPage(page).handle_route()  # todo вынести в фикстуру
+    MainPage(page).handle_route()
     MainPage(page).go_to()
     page.wait_for_load_state('networkidle')
     page.screenshot(path='main_screenshot.png', full_page=True)

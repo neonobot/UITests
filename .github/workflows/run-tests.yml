@@ -45,7 +45,7 @@ jobs:
 
       - name: Run tests and generate Allure report
         run: |
-          python -m pytest -n=2 ./tests/tests_ui_web3.py --alluredir allure-results| tee test_results.txt
+          python -m pytest --alluredir=./allure-results| tee test_results.txt
           echo "TOTAL_TESTS=$(cat test_results.txt | grep -oP '(\d+) total')" >> $GITHUB_ENV
           echo "PASSED_TESTS=$(cat test_results.txt | grep -oP '(\d+) passed')" >> $GITHUB_ENV
           echo "FAILED_TESTS=$(cat test_results.txt | grep -oP '(\d+) failed')" >> $GITHUB_ENV
@@ -67,5 +67,5 @@ jobs:
           PASSED_TESTS: ${{ env.PASSED_TESTS }}
           FAILED_TESTS: ${{ env.FAILED_TESTS }}
           SKIPPED_TESTS: ${{ env.SKIPPED_TESTS }}
-          Allure Report: https://neonobot.github.io/deBridgeApiTest/
+          Allure Report: https://neonobot.github.io/UITests/
         run: python telegram_bot.py

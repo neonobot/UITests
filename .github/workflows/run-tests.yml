@@ -45,7 +45,7 @@ jobs:
 
       - name: Run tests and generate Allure report
         run: |
-          python -m pytest -n=2 --alluredir=./allure-results | tee test_results.txt
+          python -m pytest -n 2 --alluredir=./allure-results | tee test_results.txt
           echo "TOTAL_TESTS=$(cat test_results.txt | grep -oP '(\d+) total')" >> $GITHUB_ENV
           echo "PASSED_TESTS=$(cat test_results.txt | grep -oP '(\d+) passed')" >> $GITHUB_ENV
           echo "FAILED_TESTS=$(cat test_results.txt | grep -oP '(\d+) failed')" >> $GITHUB_ENV
